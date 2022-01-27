@@ -19,6 +19,12 @@
   font-weight: 600;
 }
 
+.offsetPercentage {
+  text-align: center;
+  color: #aab4be;
+  font-size: 2.4rem;
+}
+
 .bio {
   text-align: center;
   color: #aab4be;
