@@ -1,0 +1,113 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 64px 0;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.bio {
+  text-align: center;
+  color: #aab4be;
+  margin: 16px 10px 0;
+}
+
+.waveButton {
+  cursor: pointer;
+  margin-top: 16px;
+  border: 1px solid rgb(23, 58, 94);
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  background: rgb(0, 30, 60);
+  width: 200px;
+  padding: 16px;
+  margin: 20px auto;
+  text-transform: uppercase;
+}
+
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: transparent;
+  border: 1px solid rgb(30, 73, 118);
+  border-radius: 10px;
+  color: rgb(170, 180, 190);
+  flex: 1 1;
+  font: inherit;
+  font-size: 1.2em;
+  height: 100%;
+  outline: none;
+  padding: 8px 0 8px 8px;
+  width: 80%;
+  margin: 20px auto 0;
+}
+
+.twitter {
+  text-decoration: none;
+  padding-bottom: 3px;
+  color: rgb(135, 126, 220);
+}
+
+.twitter:hover {
+  border-bottom: 1px dashed rgb(135, 126, 220);
+}
+
+.message {
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1px solid rgb(38, 93, 151);
+  background-color: rgb(19, 47, 76);
+  padding: 20px;
+  margin-top: 16px; 
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.date {
+  color: #aab4be;
+  text-align: right;
+  font-size: 12px;
+}
+
+.error {
+  color: #e91e63;
+  text-align: center;
+  margin: 16px 10px 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .top {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .date {
+    text-align: left;
+  }
+}
