@@ -3,7 +3,9 @@ import { ethers } from "ethers";
 import './App.css';
 import abi from "./utils/abi.json"
 import axios from "axios";
-
+import { ReactComponent as TreeGray } from './assets/TreeGray.svg';
+import { ReactComponent as TreeGreen } from './assets/TreeGreen.svg';
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
 
 const App = () => {
@@ -83,6 +85,10 @@ const App = () => {
     }
   }
 
+  const onPositionChange = React.useCallback((position) => {
+    console.log('[OnPositionChange.onPositionChange]', position);
+  }, []);
+
   
 
   useEffect(() => {
@@ -92,19 +98,24 @@ const App = () => {
   return (
     <div className="mainContainer">
       <div className="dataContainer">
+        
         <div className="header">
         👋 Hey there!
         </div>
-
         <div className="bio">
           Check out your CO2 emissions in Web3!
         </div>
+        <div className="treeSlider">
+          <ReactCompareSlider
+            onPositionChange={onPositionChange}
+            portrait="false"
+              itemOne={<TreeGray style={{ height: 400, width: 400 }}/>}
+              itemTwo={<TreeGreen style={{ height: 400, width: 400 }}/>}
+          />
+         </div>
         <button className="waveButton" onClick={getData}>
           Get Climate FootPrint
         </button>
-
-
-        
         {/*
         * If there is no currentAccount render this button
         */}

@@ -38,6 +38,13 @@
   text-transform: uppercase;
 }
 
+.treeSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em;
+}
+
 input {
   -webkit-appearance: none;
      -moz-appearance: none;
