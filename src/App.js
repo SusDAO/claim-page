@@ -11,7 +11,8 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [items, setItems] = useState([]);
-
+  const [offsetPercentage, setOffsetPercentage] = useState("");
+  // const [deforestedTrees, setDeforestedTrees] = useState("");
 
   /*
    * All state property to store all waves
@@ -86,7 +87,8 @@ const App = () => {
   }
 
   const onPositionChange = React.useCallback((position) => {
-    console.log('[OnPositionChange.onPositionChange]', position);
+    let percentage = position.toFixed(2);
+    setOffsetPercentage(percentage);
   }, []);
 
   
@@ -105,34 +107,41 @@ const App = () => {
         <div className="bio">
           Check out your CO2 emissions in Web3!
         </div>
-        <div className="treeSlider">
-          <ReactCompareSlider
-            onPositionChange={onPositionChange}
-            portrait="false"
-              itemOne={<TreeGray style={{ height: 400, width: 400 }}/>}
-              itemTwo={<TreeGreen style={{ height: 400, width: 400 }}/>}
-          />
-         </div>
-        <button className="waveButton" onClick={getData}>
-          Get Climate FootPrint
-        </button>
         {/*
         * If there is no currentAccount render this button
         */}
         {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        )}
-
-        {currentAccount && (
-          
-          <div className="bio">
-          Transactions: {items.length}
+          <div className="walletNotConnected">
+            <div className="treeSlider">
+              <TreeGray style={{ height: 400, width: 400 }}/>
+            </div>
+            <button className="waveButton" onClick={connectWallet}>
+            Connect Your Wallet to Save Trees!
+            </button>
           </div>
         )}
 
-        
+        {currentAccount && (
+          <div className="walletConnected">
+            <div className="treeSlider">
+              <ReactCompareSlider
+                onPositionChange={onPositionChange}
+                portrait="false"
+                  itemOne={<TreeGray style={{ height: 400, width: 400 }}/>}
+                  itemTwo={<TreeGreen style={{ height: 400, width: 400 }}/>}
+              />
+            </div>
+            <div className="offsetPercentage">{offsetPercentage}%</div>
+            <div className="bio">
+              {/* You can save the equivalent of {deforestedTrees} trees in the Amazon.  */}
+            </div>
+          </div>
+        )}
+        <button className="waveButton" onClick={getData}>
+          Get Climate FootPrint
+        </button>
+
+
       </div>
     </div>
   );
