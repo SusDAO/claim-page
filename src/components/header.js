@@ -49,7 +49,7 @@ function Header(props) {
     return <Navbar collapseOnSelect expand='sm' bg='primary' variant='dark' margin-top="20px">
         {!props.currentAccount && (
             <div>
-                <Navbar.Brand style={{fontSize: "16px", fontWeight: "900", marginLeft: "2rem"}}>SusDAO</Navbar.Brand>
+                <Navbar.Brand style={{fontSize: "16px", fontWeight: "900", marginLeft: "2rem"}}>ΞSusDAO</Navbar.Brand>
                 <button className="waveButton" onClick={connectWallet}>
                 Connect Wallet
                 </button>
@@ -57,7 +57,7 @@ function Header(props) {
         )}
         {props.currentAccount && (
             <div>
-                <Navbar.Brand style={{fontSize: "16px", fontWeight: "900", marginLeft: "2rem"}}>SusDAO</Navbar.Brand>
+                <Navbar.Brand style={{fontSize: "16px", fontWeight: "900", marginLeft: "2rem"}}>ΞSusDAO</Navbar.Brand>
                 <button className="waveButton">
                     {props.currentAccount.substring(0,6) + "..." + props.currentAccount.substring(props.currentAccount.length -4, props.currentAccount.length)}
                 </button>

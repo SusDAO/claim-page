@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import './App.css';
 import 'antd/dist/antd.css';
+import './override.css';
 import abi from "./utils/abi.json"
 import Header from "./components/header.js";
 import axios from "axios";
@@ -164,12 +165,17 @@ const App = () => {
             <button className="offsetButton" onClick={offsetButtonOnChange}>
               Offset your carbon footprint by {amountToOffset} kg
             </button>
-            <Modal title="Success" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            <Modal title="Success" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
+            footer={[
+              <Button key="back" onClick={handleOk}>
+                OK
+              </Button>]} onOk={handleOk}
+            >
               <p>Purchased {numTokens} BCT for ${usdPrice}. </p>
               <p>
                 {currentAccount.substring(0,6) + "..." + currentAccount.substring(currentAccount.length -4, currentAccount.length)} + " has been whitelisted."
               </p>
-              <p>You will get your tiered NFT shortly.</p>
+              <p class="congratsText">Welcome to <span class="logoColor">SusDAO</span>! You will get your tiered NFT shortly :)</p>
             </Modal>
           </div>
         )}

@@ -41,6 +41,10 @@ body {
   margin: 0.75em;
 }
 
+.logoColor {
+  color: rgb(112, 216, 112)
+}
+
 .bigNumber {
   font-size: xx-large;
   color: rgb(112, 216, 112);
@@ -166,4 +170,8 @@ input {
   .date {
     text-align: left;
   }
+}
+
+.congratsText {
+  font-weight: bold;
 }
