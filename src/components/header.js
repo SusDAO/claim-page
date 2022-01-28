@@ -49,6 +49,18 @@ function Header(props) {
         }
     }
 
+    const renderCuteTree = () => {
+        switch(props.nftState) {
+            case 1:
+                return <RedTree className="navbarTree" />;
+            case 2:
+                return <OrangeTree className="navbarTree" />;
+            case 3:
+                return <GreenTree className="navbarTree" />;
+        }
+    }
+    
+
     return <Navbar collapseOnSelect expand='sm' bg='primary' variant='dark' margin-top="20px">
         {!props.currentAccount && (
             <div>
@@ -64,7 +76,7 @@ function Header(props) {
                 <button className="waveButton">
                     {props.currentAccount.substring(0,6) + "..." + props.currentAccount.substring(props.currentAccount.length -4, props.currentAccount.length)}
                 </button>
-                <RedTree className="navbarTree"/>
+                {renderCuteTree()}
             </div>
         )}
     </Navbar>
