@@ -143,6 +143,9 @@ const App = () => {
             <div className="treeSlider">
               <TreeGray style={{ height: 400, width: 400 }}/>
             </div>
+            <div className="bio">
+              Connect your wallet to discover your carbon footprint!
+            </div>
           </div>
         )}
 
