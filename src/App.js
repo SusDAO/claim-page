@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
+import 'antd/dist/antd.css';
 import './App.css';
 import abi from "./utils/abi.json"
 import Header from "./components/header.js";
@@ -8,6 +9,8 @@ import { ReactComponent as TreeGray } from './assets/TreeGray.svg';
 import { ReactComponent as TreeGreen } from './assets/TreeGreen.svg';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
+import ReactDOM from 'react-dom';
+import { Modal, Button } from 'antd';
 
 const App = () => {
 
@@ -16,11 +19,27 @@ const App = () => {
   const [offsetPercentage, setOffsetPercentage] = useState("");
   const [carbonFootprint, setCarbonFootprint] = useState(0);
   const [carbonFlights, setCarbonFlights] = useState(0);
+  const [carbonTrees, setCarbonTrees] = useState(0);
+  const actualOffsetPercentage = 100.0 - offsetPercentage;
   // const [deforestedTrees, setDeforestedTrees] = useState("");
 
   /*
    * All state property to store all waves
    */
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const checkIfWalletIsConnected = async () => {
       try {
@@ -39,6 +58,7 @@ const App = () => {
           const account = accounts[0];
           console.log("Found an authorized account:", account);
           setCurrentAccount(account);
+          getData();
       } else {
           console.log("No authorized account found")
       }
@@ -60,11 +80,12 @@ const App = () => {
         // props.setCarbonFootprint(props.items.length * 119.16);
         setCarbonFootprint(144 * 119.16);
         setCarbonFlights((carbonFootprint / 594.8).toFixed(2));
+        setCarbonTrees((carbonFootprint / 1000 * 6));
 
-        console.log(carbonFootprint);
-        console.log(carbonFlights);
-        console.log("Carbon Footprint: " + carbonFootprint + "KG of CO2");
-        console.log("Carbon Flights: " + carbonFlights + "round trip flights from SF to Miami");
+        // console.log(carbonFootprint);
+        // console.log(carbonFlights);
+        // console.log("Carbon Footprint: " + carbonFootprint + "KG of CO2");
+        // console.log("Carbon Flights: " + carbonFlights + "round trip flights from SF to Miami");
         //     } catch (err) {
         //         // Handle Error Here
         //         console.error(err);
@@ -79,6 +100,13 @@ const App = () => {
     setOffsetPercentage(percentage);
   }, []);
 
+  const kGCarbonEmissions = 17159.04;
+  const numberOfRoundTripFlights = Math.round(kGCarbonEmissions / 594.8);
+  const TREES_PER_TON = 6;
+  const numberTrees = Math.round(kGCarbonEmissions/1000*TREES_PER_TON);
+  const amountToOffset = Math.round(kGCarbonEmissions * actualOffsetPercentage / 100);
+  const numTokens = amountToOffset / 1000;
+  const usdPrice = (numTokens * 5.09).toFixed(2);
 
   useEffect(() => {
     checkIfWalletIsConnected();
@@ -86,6 +114,10 @@ const App = () => {
   
   return (
     <div>
+
+      <div>
+        {/* <view style={{color: "transparent"}}> */}
+      </div>
       <Header items={items} currentAccount={currentAccount}
         setCurrentAccount={setCurrentAccount} setItems={setItems}
         getData={getData} 
@@ -94,9 +126,6 @@ const App = () => {
     <div className="mainContainer">
       <div className="dataContainer">
         
-        <div className="bio">
-          Check out your CO2 emissions in Web3!
-        </div>
         {/*
         * If there is no currentAccount render this button
         */}
@@ -118,13 +147,22 @@ const App = () => {
                   itemTwo={<TreeGreen style={{ height: 400, width: 400 }}/>}
               />
             </div>
-            <div className="offsetPercentage">{(100.0 - offsetPercentage).toFixed(2)}%</div>
+            <div className="offsetPercentage">Pay off {actualOffsetPercentage.toFixed(2)}% of your emissions for ${usdPrice} USD</div>
             <div className="bio">
-              {/* You can save the equivalent of {deforestedTrees} trees in the Amazon.  */}
+              <div>Your Ethereum transactions amount to <span class="bigNumber">{carbonFootprint} kg</span> carbon emissions.</div>
+              <div>This corresponds to <span class="bigNumber">{numberOfRoundTripFlights}</span> roundtrip flights between SF and Miami!</div>
+              <div>It would take <span class="bigNumber">{numberTrees}</span> trees an entire year to offset this amount.</div>
             </div>
+            <button className="offsetButton" onClick={showModal}>
+              Offset your carbon footprint by {amountToOffset} kg
+            </button>
+            <Modal title="Success" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+              <p>Purchased {numTokens} BCT for ${usdPrice}. </p>
+              <p></p>
+              <p>You will get your tiered NFT shortly.</p>
+            </Modal>
           </div>
         )}
-
       </div>
     </div>
     </div>
