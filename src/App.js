@@ -50,6 +50,10 @@ const App = () => {
     setOffsetPercentage(percentage);
   }, []);
 
+  const kGCarbonEmissions = 10420;
+  const numberOfRoundTripFlights = Math.round(10420/1500);
+  const TREES_PER_TON = 6;
+  const numberTrees = Math.round(kGCarbonEmissions/1000*TREES_PER_TON);
 
   useEffect(() => {
     checkIfWalletIsConnected();
@@ -90,8 +94,13 @@ const App = () => {
             </div>
             <div className="offsetPercentage">{(100.0 - offsetPercentage).toFixed(2)}%</div>
             <div className="bio">
-              {/* You can save the equivalent of {deforestedTrees} trees in the Amazon.  */}
+              <p>Your Ethereum transactions amount to <span class="bigNumber">{kGCarbonEmissions} kg</span> carbon emissions.</p>
+              <p>This corresponds to <span class="bigNumber">{numberOfRoundTripFlights}</span> roundtrip flights between SF and Miami!</p>
+              <p>It would take <span class="bigNumber">{numberTrees}</span> mature trees an entire year to offset this amount.</p>
             </div>
+            <button className="offsetButton">
+              Offset your carbon footprint
+            </button>
           </div>
         )}
 
