@@ -1,6 +1,9 @@
 import { React } from "react";
 import { Navbar, Nav, NavItem} from 'react-bootstrap';
 import axios from "axios";
+import { ReactComponent as RedTree } from './../assets/red_tree.svg';
+import { ReactComponent as OrangeTree } from './../assets/orange_tree.svg';
+import { ReactComponent as GreenTree } from './../assets/green_tree.svg';
 
 function Header(props) {
 
@@ -47,16 +50,22 @@ function Header(props) {
     }
 
     return <Navbar collapseOnSelect expand='sm' bg='primary' variant='dark' margin-top="20px">
-        <Navbar.Brand style={{fontSize: "40px", fontWeight: "bold", marginLeft: "2rem"}}>SusDAO</Navbar.Brand>
         {!props.currentAccount && (
-            <button className="waveButton" onClick={connectWallet}>
-              Connect Wallet
-            </button>
+            <div>
+                <Navbar.Brand style={{fontSize: "16px", fontWeight: "900", marginLeft: "2rem"}}>SusDAO</Navbar.Brand>
+                <button className="waveButton" onClick={connectWallet}>
+                Connect Wallet
+                </button>
+            </div>
         )}
         {props.currentAccount && (
-            <button className="waveButton">
-                {props.currentAccount.substring(0,6) + "..." + props.currentAccount.substring(props.currentAccount.length -4, props.currentAccount.length)}
-            </button>
+            <div>
+                <Navbar.Brand style={{fontSize: "16px", fontWeight: "900", marginLeft: "2rem"}}>SusDAO</Navbar.Brand>
+                <button className="waveButton">
+                    {props.currentAccount.substring(0,6) + "..." + props.currentAccount.substring(props.currentAccount.length -4, props.currentAccount.length)}
+                </button>
+                <RedTree className="navbarTree"/>
+            </div>
         )}
     </Navbar>
 }
