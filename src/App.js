@@ -158,7 +158,9 @@ const App = () => {
             </button>
             <Modal title="Success" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
               <p>Purchased {numTokens} BCT for ${usdPrice}. </p>
-              <p></p>
+              <p>
+                {currentAccount.substring(0,6) + "..." + currentAccount.substring(currentAccount.length -4, currentAccount.length)} + " has been whitelisted."
+              </p>
               <p>You will get your tiered NFT shortly.</p>
             </Modal>
           </div>
