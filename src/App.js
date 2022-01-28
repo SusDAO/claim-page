@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import 'antd/dist/antd.css';
 import './App.css';
+import 'antd/dist/antd.css';
 import abi from "./utils/abi.json"
 import Header from "./components/header.js";
 import axios from "axios";
