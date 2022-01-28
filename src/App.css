@@ -19,6 +19,12 @@
   font-weight: 600;
 }
 
+.offsetPercentage {
+  text-align: center;
+  color: #aab4be;
+  font-size: 2.4rem;
+}
+
 .bio {
   text-align: center;
   color: #aab4be;
@@ -39,6 +45,13 @@
   margin: 2px auto;
   text-transform: uppercase;
   font: 2em;
+}
+
+.treeSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em;
 }
 
 input {

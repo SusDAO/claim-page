@@ -10,9 +10,10 @@
     "bootstrap": "^5.1.1",
     "ethers": "^5.4.4",
     "react": "^16.12.0",
+    "react-bootstrap": "^2.1.1",
+    "react-compare-slider": "^2.2.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "5.0.0",
-    "react-bootstrap": "^2.1.1"
+    "react-scripts": "5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
   }
 }
