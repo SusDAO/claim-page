@@ -15,6 +15,7 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [offsetPercentage, setOffsetPercentage] = useState("");
   const actualOffsetPercentage = 100.0 - offsetPercentage;
+  const [nftState, setNftState] = useState(0);
   // const [deforestedTrees, setDeforestedTrees] = useState("");
 
   /*
@@ -51,6 +52,12 @@ const App = () => {
     setOffsetPercentage(percentage);
   }, []);
 
+  const offsetButtonOnChange = () => {
+    if (nftState < 3) {
+      setNftState(nftState + 1);
+    }
+  }
+
   const kGCarbonEmissions = 10420;
   const numberOfRoundTripFlights = Math.round(10420/1500);
   const TREES_PER_TON = 6;
@@ -65,6 +72,7 @@ const App = () => {
     <div>
       <Header items={items} currentAccount={currentAccount}
         setCurrentAccount={setCurrentAccount} setItems={setItems}
+        nftState={nftState}
       />
 
     <div className="mainContainer">
@@ -100,7 +108,7 @@ const App = () => {
               <div>This corresponds to <span class="bigNumber">{numberOfRoundTripFlights}</span> roundtrip flights between SF and Miami!</div>
               <div>It would take <span class="bigNumber">{numberTrees}</span> mature trees an entire year to offset this amount.</div>
             </div>
-            <button className="offsetButton">
+            <button className="offsetButton" onClick={offsetButtonOnChange}>
               Offset your carbon footprint by {amountToOffset} kg
             </button>
           </div>
