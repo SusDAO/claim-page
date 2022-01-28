@@ -21,6 +21,7 @@ const App = () => {
   const [carbonFlights, setCarbonFlights] = useState(0);
   const [carbonTrees, setCarbonTrees] = useState(0);
   const actualOffsetPercentage = 100.0 - offsetPercentage;
+  const [nftState, setNftState] = useState(0);
   // const [deforestedTrees, setDeforestedTrees] = useState("");
 
   /*
@@ -102,6 +103,12 @@ const App = () => {
 
   const kGCarbonEmissions = 17159.04;
   const numberOfRoundTripFlights = Math.round(kGCarbonEmissions / 594.8);
+  const offsetButtonOnChange = () => {
+    if (nftState < 3) {
+      setNftState(nftState + 1);
+    }
+    showModal();
+  }
   const TREES_PER_TON = 6;
   const numberTrees = Math.round(kGCarbonEmissions/1000*TREES_PER_TON);
   const amountToOffset = Math.round(kGCarbonEmissions * actualOffsetPercentage / 100);
@@ -121,6 +128,7 @@ const App = () => {
       <Header items={items} currentAccount={currentAccount}
         setCurrentAccount={setCurrentAccount} setItems={setItems}
         getData={getData} 
+        nftState={nftState}
       />
 
     <div className="mainContainer">
@@ -153,7 +161,7 @@ const App = () => {
               <div>This corresponds to <span class="bigNumber">{numberOfRoundTripFlights}</span> roundtrip flights between SF and Miami!</div>
               <div>It would take <span class="bigNumber">{numberTrees}</span> trees an entire year to offset this amount.</div>
             </div>
-            <button className="offsetButton" onClick={showModal}>
+            <button className="offsetButton" onClick={offsetButtonOnChange}>
               Offset your carbon footprint by {amountToOffset} kg
             </button>
             <Modal title="Success" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>

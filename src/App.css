@@ -1,5 +1,8 @@
 .navbar {
   padding: 1.5em;
+  font-size: 16px;
+  font-weight: 900;
+  color: white;
 }
 
 body {
@@ -65,18 +68,22 @@ body {
 
 .waveButton {
   cursor: pointer;
-  margin-top: 16px;
   float: right;
-  margin-left: 200px;
   border: 1px solid rgb(112, 216, 112);
   border-radius: 20px;
   color: rgb(0, 0, 0);
   background: rgb(112, 216, 112);
   width: 200px;
   padding: 6px;
-  margin: 2px auto;
   text-transform: uppercase;
   font: 2em;
+}
+
+.navbarTree {
+  float: right;
+  height: 29px;
+  width: 29px;
+  margin-right: 1em;
 }
 
 .treeSlider {
