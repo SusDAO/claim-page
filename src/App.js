@@ -96,9 +96,9 @@ const App = () => {
             </div>
             <div className="offsetPercentage">{actualOffsetPercentage.toFixed(2)}%</div>
             <div className="bio">
-              <p>Your Ethereum transactions amount to <span class="bigNumber">{kGCarbonEmissions} kg</span> carbon emissions.</p>
-              <p>This corresponds to <span class="bigNumber">{numberOfRoundTripFlights}</span> roundtrip flights between SF and Miami!</p>
-              <p>It would take <span class="bigNumber">{numberTrees}</span> mature trees an entire year to offset this amount.</p>
+              <div>Your Ethereum transactions amount to <span class="bigNumber">{kGCarbonEmissions} kg</span> carbon emissions.</div>
+              <div>This corresponds to <span class="bigNumber">{numberOfRoundTripFlights}</span> roundtrip flights between SF and Miami!</div>
+              <div>It would take <span class="bigNumber">{numberTrees}</span> mature trees an entire year to offset this amount.</div>
             </div>
             <button className="offsetButton">
               Offset your carbon footprint by {amountToOffset} kg
