@@ -14,6 +14,8 @@ const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [items, setItems] = useState([]);
   const [offsetPercentage, setOffsetPercentage] = useState("");
+  const [carbonFootprint, setCarbonFootprint] = useState(0);
+  const [carbonFlights, setCarbonFlights] = useState(0);
   // const [deforestedTrees, setDeforestedTrees] = useState("");
 
   /*
@@ -59,6 +61,12 @@ const App = () => {
     <div>
       <Header items={items} currentAccount={currentAccount}
         setCurrentAccount={setCurrentAccount} setItems={setItems}
+        offsetPercentage={offsetPercentage}
+        setOffsetPercentage={setOffsetPercentage}
+        carbonFootprint={carbonFootprint}
+        setCarbonFootprint={setCarbonFootprint}
+        carbonFlights={carbonFlights}
+        setCarbonFlights={setCarbonFlights}
       />
 
     <div className="mainContainer">
