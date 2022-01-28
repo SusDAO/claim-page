@@ -47,6 +47,33 @@ const App = () => {
       }
     }
 
+  const getData = async () => {
+        // if (props.currentAccount) {
+        //     try {
+                // const api_endpoint = `https://api.covalenthq.com/v1/1/address/${currentAccount}/transactions_v2/?quote-currency=USD&format=JSON&block-signed-at-asc=false&no-logs=false&page-size=10000&key=ckey_a9997b6fa653474b8af7421fa82:`
+                // console.log(api_endpoint)
+                // const response = await axios.get(api_endpoint);
+                // console.log(response.data);
+                // setItems(response.data.data.items)
+        setItems(new Array(144).fill(0))
+        console.log(items)
+        // props.setCarbonFootprint(props.items.length * 119.16);
+        setCarbonFootprint(144 * 119.16);
+        setCarbonFlights((carbonFootprint / 594.8).toFixed(2));
+
+        console.log(carbonFootprint);
+        console.log(carbonFlights);
+        console.log("Carbon Footprint: " + carbonFootprint + "KG of CO2");
+        console.log("Carbon Flights: " + carbonFlights + "round trip flights from SF to Miami");
+        //     } catch (err) {
+        //         // Handle Error Here
+        //         console.error(err);
+        //     }
+        // } else {
+        //     console.error("NOT Connected");
+        // }
+    }
+
   const onPositionChange = React.useCallback((position) => {
     let percentage = position.toFixed(2);
     setOffsetPercentage(percentage);
@@ -61,12 +88,7 @@ const App = () => {
     <div>
       <Header items={items} currentAccount={currentAccount}
         setCurrentAccount={setCurrentAccount} setItems={setItems}
-        offsetPercentage={offsetPercentage}
-        setOffsetPercentage={setOffsetPercentage}
-        carbonFootprint={carbonFootprint}
-        setCarbonFootprint={setCarbonFootprint}
-        carbonFlights={carbonFlights}
-        setCarbonFlights={setCarbonFlights}
+        getData={getData} 
       />
 
     <div className="mainContainer">
